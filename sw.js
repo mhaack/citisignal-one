@@ -1,7 +1,6 @@
 console.log('Service Worker Loaded');
 
 const BASE_PATH = '/mhaack/citisignal-one';
-const LIVE_HOST_NAME = 'main--citisignal-one--mhaack.aem.live';
 
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (event) => event.waitUntil(clients.claim()));
@@ -19,7 +18,7 @@ self.addEventListener('fetch', (event) => {
   }
 
   const updatedUrl = new URL(event.request.url);
-  updatedUrl.hostname = LIVE_HOST_NAME;
+  updatedUrl.pathname = `${BASE_PATH}${updatedUrl.pathname}`;
 
   console.log(`Rewriting ${pathname} to ${updatedUrl.href}`);
 
