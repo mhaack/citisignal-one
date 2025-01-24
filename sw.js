@@ -77,7 +77,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  console.log(`Rewriting ${pathname} to /mhaack/citisignal-one${pathname}`);
+  console.log(`Rewriting ${pathname} to https://main--citisignal-one--mhaack.aem.live/${pathname}`);
 
   event.respondWith(fetch(`https://main--citisignal-one--mhaack.aem.live/${pathname}`, { mode, headers, method, credentials }));
 
