@@ -291,7 +291,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "div:nth-child(2)>div:nth-child(1)>h1",
+        "name": "div:nth-child(2)>div:nth-child(1)>h1.textContent",
         "label": "Heading",
         "value": ""
       },
