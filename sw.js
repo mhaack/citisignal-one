@@ -65,7 +65,7 @@ function mapInbound(originalPath, cfg) {
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (event) => event.waitUntil(clients.claim()));
 
-self.addEventListener('fetch', async (event) => {
+self.addEventListener('fetch', (event) => {
   console.log(event);
   // ignore for non-GET and navigate requests.
   if (event.request.mode === "navigate" || event.request.method !== "GET") return;
@@ -79,11 +79,7 @@ self.addEventListener('fetch', async (event) => {
 
   console.log(`Rewriting ${pathname} to https://main--citisignal-one--mhaack.aem.live${pathname}`);
 
-  const result = await fetch(`https://main--citisignal-one--mhaack.aem.live${pathname}`, { mode, headers, method, credentials })
-
-  console.log(result);
-
-  event.respondWith(result);
+  event.respondWith(fetch(`https://main--citisignal-one--mhaack.aem.live${pathname}`, { mode, headers, method, credentials }));
 
   // const opts = { mode, headers, method, credentials };
   // const resourceEndpoint = self.location.pathname.substring(0, self.location.pathname.length - 5);
