@@ -43,7 +43,7 @@
         if ("serviceWorker" in navigator) {
             try {
                 const basePath = "/mhaack/citisignal-one/";
-                const swPath = "/sw.js";
+                const swPath = "/mhaack/citisignal-one/sw.js";
                 if (swPath && basePath && window.location.pathname.startsWith(basePath)) {
                     // only register service worker if the location is within the controlled base path
                     await navigator.serviceWorker.register(swPath, { scope: basePath });
