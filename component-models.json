@@ -284,7 +284,7 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "div > div:nth-child(2) > div",
         "label": "Alt",
         "value": ""
       },
