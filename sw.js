@@ -67,11 +67,18 @@ self.addEventListener('activate', (event) => event.waitUntil(clients.claim()));
 
 self.addEventListener('fetch', (event) => {
   console.log(event);
-  // // ignore for non-GET and navigate requests.
-  // if (event.request.mode === "navigate" || event.request.method !== "GET") return;
-  // const { origin, pathname } = new URL(event.request.url);
-  // if (origin !== self.location.origin) return;
-  // const { mode, headers, method, credentials } = event.request;
+  // ignore for non-GET and navigate requests.
+  if (event.request.mode === "navigate" || event.request.method !== "GET") return;
+  const { origin, pathname } = new URL(event.request.url);
+  if (origin !== self.location.origin) return;
+  const { mode, headers, method, credentials } = event.request;
+
+  if (pathname.startsWith('/mhaack/citisignal-one')) {
+    return;
+  }
+
+  event.respondWith(fetch(`${self.location.origin}/mhaack/citisignal-one${pathname}`, { mode, headers, method, credentials }));
+
   // const opts = { mode, headers, method, credentials };
   // const resourceEndpoint = self.location.pathname.substring(0, self.location.pathname.length - 5);
   // const sitePath = resourceEndpoint.substring(0, resourceEndpoint.length - 10);
