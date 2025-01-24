@@ -37,3 +37,22 @@
 
 <link rel="preconnect" href="https://catalog-service-sandbox.adobe.io" crossorigin="" />
 <link rel="preconnect" href="https://catalog-service.adobe.io" crossorigin="" />
+
+<script type="module">
+    (async () => {
+        if ("serviceWorker" in navigator) {
+            try {
+                const basePath = "/mhaack/citisignal-one/";
+                const swPath = "/sw.js";
+                if (swPath && basePath && window.location.pathname.startsWith(basePath)) {
+                    // only register service worker if the location is within the controlled base path
+                    await navigator.serviceWorker.register(swPath, { scope: basePath });
+                    // reload as long as the page is not controlled by the service worker
+                    if (!navigator.serviceWorker.controller) window.location.reload();
+                }
+            } catch (error) {
+                console.error(`Registration failed with ${error}`);
+            }
+        }
+    })();
+</script>
