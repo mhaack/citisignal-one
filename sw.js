@@ -77,6 +77,8 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  console.log(`Rewriting ${pathname} to /mhaack/citisignal-one${pathname}`);
+
   event.respondWith(fetch(`${self.location.origin}/mhaack/citisignal-one${pathname}`, { mode, headers, method, credentials }));
 
   // const opts = { mode, headers, method, credentials };
