@@ -284,14 +284,14 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "div > div:nth-child(2) > div",
+        "name": "imageAlt",
         "label": "Alt",
         "value": ""
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "heading",
+        "name": "div > div:nth-child(2) > div",
         "label": "Heading",
         "value": ""
       },
