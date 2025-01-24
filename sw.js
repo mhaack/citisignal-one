@@ -1,3 +1,5 @@
+console.log('Service Worker Loaded');
+
 function appendExtensionInbound(path, extension) {
   // append the extension only if the path does not already end with it
   if (!path.endsWith(extension)) {
