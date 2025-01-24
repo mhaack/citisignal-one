@@ -77,12 +77,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  console.log(`Rewriting ${pathname} to https://main--citisignal-one--mhaack.aem.live${pathname}`);
-
   const updatedUrl = new URL(event.request.url);
   updatedUrl.hostname = 'main--citisignal-one--mhaack.aem.live';
 
-  event.respondWith(fetch(updatedUrl, { mode, headers, method, credentials }));
+  console.log(`Rewriting ${pathname} to ${updatedUrl.href}`);
+
+  event.respondWith(fetch(updatedUrl.href, { mode, headers, method, credentials }));
 
   // const opts = { mode, headers, method, credentials };
   // const resourceEndpoint = self.location.pathname.substring(0, self.location.pathname.length - 5);
